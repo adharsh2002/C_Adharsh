@@ -144,7 +144,8 @@ def order_created(request):
             # instance.nod = 0
             # instance.save()
             # return render(request,"ord_create.html", {"error":"Can't rent beyond 30 days"})
-            
+        elif instance.get_time()==0: 
+            messages.info(request, "Oops, Choose atleast 1 day")
         else:  
             instance.nod = instance.get_time()
             ls.append(instance.car_name)
@@ -173,9 +174,11 @@ def order_update(request, id=None):
 def order_delete(request,id=None):
     query = get_object_or_404(Order,id = id)
     global ls,us
-    ls.clear
+    del ls[-1]
     us=""
+    messages.info(request, "Your order has been succesfully cancelled!")
     query.delete()
+    
     return HttpResponseRedirect("/car/nicecar/")
 
 def newcar(request):
@@ -276,7 +279,10 @@ def popular_car(request):
     except EmptyPage:
         # If page is out of range (e.g. 9999), deliver last page of results.
         new = paginator.page(paginator.num_pages)
+
+    val =ls
     context = {
+        'val':val,
         'car': new,
     }
     return render(request, 'popular_car.html', context)

@@ -31,7 +31,7 @@
                 <a href="{% url 'like' ob.id %}" class="btn btn-success" role="button"><span class="glyphicon glyphicon-thumbs-up"></span></a>
                 <a href="{% url 'car_detail' ob.id %}" class="btn btn-primary" style="background-color: rgb(120, 63, 123);" role="button">Detail</a>
                 {% if ob.car_name in val%}
-                <a href="" class="btn btn-danger"  style="background-color: red;" role="button">Booked</a></p>
+                <a href="" class="btn btn-danger"  style="background-color: red; pointer-events: none;" role="button">Booked</a></p>
                 {% else %}
                 <a href="{% url 'order_create' %}" class="btn btn-danger" role="button">Book</a></p>
                 {% endif %}
