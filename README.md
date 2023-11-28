@@ -12,7 +12,20 @@ This Django project is a simple car rental system that allows users to rent cars
 
 ### 1. Clone the Repository
 ```bash
-git clone https://github.com/adharsh2002/car-rental.git
-cd car-rental
+>git clone https://github.com/adharsh2002/car-rental.git
 
+>cd car-rental
 
+###2. Create and Activate Virtual Environment
+>python3 -m venv venv
+
+>source venv/bin/activate OR >cd venv >Scripts\activate
+###3. Install Dependencies
+
+>pip install -r requirements.txt
+###4. Apply Migrations
+
+python manage.py migrate
+###5. Create Superuser (Admin)
+
+python manage.py createsuperuser
